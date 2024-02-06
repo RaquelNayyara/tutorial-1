@@ -36,8 +36,6 @@ public class ProductController {
         return "productList";
     }
 
-<<<<<<< Updated upstream
-=======
     @GetMapping("/edit/{id}")
     public String editProductPage(@PathVariable("id") String id, Model model) {
         Product product = service.findById(id);
@@ -56,5 +54,4 @@ public class ProductController {
         service.deleteProduct(id);
         return "redirect:../list";
     }
->>>>>>> Stashed changes
 }
