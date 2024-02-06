@@ -19,9 +19,6 @@ public class ProductRepository {
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
-<<<<<<< Updated upstream
-=======
-
     public Product findById(String productId) {
         return productData.stream()
                 .filter(product -> product.getProductId().equals(productId))
@@ -44,5 +41,4 @@ public class ProductRepository {
         productData.remove(product);
         return product;
     }
->>>>>>> Stashed changes
 }
