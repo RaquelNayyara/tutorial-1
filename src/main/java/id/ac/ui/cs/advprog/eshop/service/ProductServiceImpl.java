@@ -28,4 +28,23 @@ public class ProductServiceImpl implements ProductService {
         productIterator.forEachRemaining(allProduct::add);
         return allProduct;
     }
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    public Product findById(String productId) {
+        return productRepository.findById(productId);
+    }
+
+    @Override
+    public Product editProduct(Product editedProduct) {
+        productRepository.edit(editedProduct);
+        return editedProduct;
+    }
+
+    @Override
+    public Product deleteProduct(String productId) {
+        return productRepository.delete(productId);
+    }
+>>>>>>> Stashed changes
 }
