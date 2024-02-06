@@ -6,4 +6,10 @@ import java.util.List;
 public interface ProductService {
     public Product create(Product product);
     public List<Product> findAll();
+<<<<<<< Updated upstream
+=======
+    public Product findById(String productId);
+    public Product editProduct(Product editedProduct);
+    public Product deleteProduct(String productId);
+>>>>>>> Stashed changes
 }
