@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    public ProductService service;
+    private ProductService service;
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
@@ -29,7 +31,7 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
-        service.create(product);
+        service.createProduct(product);
         return "redirect:list";
     }
 
@@ -47,15 +49,16 @@ public class ProductController {
         return "editProduct";
     }
 
-    @PostMapping("/edit")
-    public String editProductPost(@ModelAttribute Product product, Model model){
-        service.editProduct(product);
-        return "redirect:list";
-    }
-
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProduct(@PathVariable("id") String id, Model model) {
         service.deleteProduct(id);
+        return "redirect:../list";
+    }
+
+    @PutMapping(value = "/edit/{id}")
+    public String editProduct(@PathVariable("id") String id, @ModelAttribute Product product, Model model) {
+        product.setProductId(id);
+        service.editProduct(product);
         return "redirect:../list";
     }
 }
