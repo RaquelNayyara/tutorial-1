@@ -1,3 +1,5 @@
+# Tutorial 1
+
 ## Refleksi 1
 
 You already implemented two new features using Spring Boot. Check again your source code and evaluate the coding standards that you have learned in this module. Write clean code principles and secure coding practices that have been applied to your code. If you find any mistake in your source code, please explain how to improve your code. Please write your reflection inside the repository's README.md file.
@@ -20,3 +22,16 @@ Saat selesai mengerjakan ```unit-test``` kode saya terasa jauh lebih mudah. Untu
 
 2. Suppose that after writing the CreateProductFunctionalTest.java along with the corresponding test case, you were asked to create another functional test suite that verifies the number of items in the product list. You decided to create a new Java class similar to the prior functional test suites with the same setup procedures and instance variables. What do you think about the cleanliness of the code of the new functional test suite? Will the new code reduce the code quality? Identify the potential clean code issues, explain the reasons, and suggest possible improvements to make the code cleaner.
 Menurut pendapat saya, kode akan menjadi kurang bersih. Alasannya adalah bahwa pengujian fungsional untuk memeriksa detail produk dan berapa banyak produk dalam daftar tidak begitu berbeda. Oleh karena itu, akan ada terlalu banyak kode yang diulang. Solusinya adalah menggabungkan dua kelas menjadi satu dan membuat metode untuk baris kode yang sama.
+
+
+# Tutorial 2
+
+### 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
+    
+- Memperbaiki dan menghindari error dari penggunaan nilai dalam annotation, dengan menghapus value= yang tidak perlu dari annotation, sehingga kode menjadi clean
+- Masalah modifier ``public`` dalam interface, saya menghapus modifier `public` yang tidak perlu dalam method interface
+
+### 2. Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
+
+- Continuous Integration dapat dicapai melalui execute tes dari pull, push, dan merge ke repository, yang diatur dalam alur kerja `ci.yml`
+- Continuous Deployment dari Koyeb, mengotomatisasi proses dari pull, push, dan merge ke dalam repository
