@@ -35,3 +35,27 @@ Menurut pendapat saya, kode akan menjadi kurang bersih. Alasannya adalah bahwa p
 
 - Continuous Integration dapat dicapai melalui execute tes dari pull, push, dan merge ke repository, yang diatur dalam alur kerja `ci.yml`
 - Continuous Deployment dari Koyeb, mengotomatisasi proses dari pull, push, dan merge ke dalam repository
+
+
+# Tutorial 3
+
+### 1. Explain what principles you apply to your project!
+Prinsip yang saya terapkan pada tutorial 3:
+
+- Menghapus extend `ProductController` dalam class `CarController` dan memisahkan ke dalam file java masing masing untuk mengikuti SRP, karena `CarController` saat di extend hanya pengendalian untuk Car saja bukan untuk produk mengikuti SRP.
+- Menghapus extend `ProductController` dalam class `CarController` jadi tidak ada inheritance dari superclass ke subclass, sehingga mengikuti LSP.
+- Mengapus setter UUID dalam konstruktor model `Product` dan memindahkan ke dalam method `create` pada `ProductRepository`
+- Karena kedua interface terkait hanya dengan satu objek masing-masing (`ProductService` terkait dengan `Product` dan `CarService` terkait dengan `Car`) program mengikuti ISP.
+- Mengubah `private CarServiceImpl carService` menjadi `private CarService carService` untuk mengikuti OCP, lalu keduanya bergantuk pada abstract yang mengikuti DIP.
+
+### 2. Explain the advantages of applying SOLID principles to your project with examples.
+Keuntungan menerapkan prinsip `SOLID`
+- OCP dan DIP: Memudahkan penambahan atau penggantian komponen tanpa perlu mengubah kode yang sudah ada. Ini mengurangi risiko bug dan mempermudah pengujian.
+- SRP: Memperjelas struktur kode dengan membagi tanggung jawab, membuat kode lebih mudah dipahami dan diuji. Perubahan pada satu bagian tidak mengganggu bagian lain.
+- LSP dan ISP: Memungkinkan fleksibilitas dan penggantian komponen dengan mudah karena setiap bagian kode memiliki tanggung jawab yang jelas dan terbatas.
+
+### 3. Explain the disadvantages of not applying SOLID principles to your project with examples.
+Kerugian tidak menerapkan prinsip `SOLID`
+- Tanpa OCP dan DIP: Kode menjadi kaku dan sulit diperbarui atau diuji. Perubahan kecil bisa memerlukan banyak penyesuaian di tempat lain.
+- Tanpa SRP: Kode menjadi rumit dan sulit dipelihara. Satu perubahan bisa berdampak luas, meningkatkan risiko bug.
+- Tanpa LSP dan ISP: Kurangnya fleksibilitas dan ketergantungan yang tinggi antar komponen, membuat sulit untuk menambah atau mengubah fitur tanpa mengubah banyak bagian kode.
