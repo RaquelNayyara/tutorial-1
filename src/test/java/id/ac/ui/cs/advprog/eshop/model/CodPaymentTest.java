@@ -1,7 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
