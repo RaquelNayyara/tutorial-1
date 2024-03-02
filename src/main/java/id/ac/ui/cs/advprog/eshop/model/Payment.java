@@ -1,7 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.model;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import java.util.Map;
 
 @Builder
@@ -11,12 +12,48 @@ public class Payment {
     String method;
     Order order;
     Map<String, String> paymentData;
-    @Setter
     String status;
 
     public Payment(String id, String method, Order order, Map<String, String> paymentData) {
+        this.id = id;
+        this.method = method;
+        this.order = order;
+        this.paymentData = paymentData;
+        this.status = "WAITING_PAYMENT";
+
+        if (order == null) {
+            throw new IllegalArgumentException("Order must not be null");
+        }
+
+        if (paymentData == null || paymentData.isEmpty()) {
+            throw new IllegalArgumentException("Payment data must not be null or empty");
+        }
+
+        if (method == null || method.isEmpty()) {
+            throw new IllegalArgumentException("Payment method must not be null or empty");
+        }
+
+        if (!PaymentMethod.contains(method)) {
+            throw new IllegalArgumentException("Invalid payment method");
+        }
+
+        if (method == PaymentMethod.VOUCHER.getValue() && !paymentData.containsKey("voucherCode")) {
+            throw new IllegalArgumentException("Voucher code must be provided for voucher payment");
+        }
+
+        if (method == PaymentMethod.COD.getValue() && (!paymentData.containsKey("Address") || !paymentData.containsKey("deliveryFee"))) {
+            throw new IllegalArgumentException("Address and delivery fee must be provided for cash on delivery payment");
+        }
+    }
+    public Payment(String id, String method, Order order, Map<String, String> paymentData, String status) {
+        this(id, method, order, paymentData);
+        this.setStatus(status);
     }
 
-    public Payment(String id, String method, Order order, Map<String, String> paymentData, String status) {
+    public void setStatus(String status) {
+        if (!PaymentStatus.contains(status)) {
+            throw new IllegalArgumentException("Invalid payment status");
+        }
+        this.status = status;
     }
 }
