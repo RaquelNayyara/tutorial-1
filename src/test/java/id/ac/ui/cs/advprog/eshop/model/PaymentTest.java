@@ -70,7 +70,7 @@ class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentWithEmptyPaymentData() {
+    void testCreatePaymentWithCashOnDeliveryButEmptyPaymentData() {
         paymentData.clear();
         assertThrows(IllegalArgumentException.class, () -> {
             new Payment("a3e3e3e3-9a7f-4603-92c2-eaf529271cc9", PaymentMethod.COD.getValue(), order, paymentData);
@@ -159,7 +159,7 @@ class PaymentTest {
     }
 
     @Test
-    void testSetPaymentStatusToWaitingConfirmation() {
+    void testSetPaymentStatusToWaitingPayment() {
         loadCashOnDeliveryPaymentData();
         Payment payment = new Payment("a3e3e3e3-9a7f-4603-92c2-eaf529271cc9", PaymentMethod.COD.getValue(), order, paymentData);
         payment.setStatus(PaymentStatus.WAITING_PAYMENT.getValue());
@@ -206,13 +206,11 @@ class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentWithVoucherButPaymentDataHasNoVoucherCode() {
-        loadVoucherCodePaymentData();
-        paymentData.remove("voucherCode");
+    void testCreatePaymentWithVoucherButEmptyPaymentData() {
+        paymentData.clear();
         assertThrows(IllegalArgumentException.class, () -> {
             new Payment("a3e3e3e3-9a7f-4603-92c2-eaf529271cc9", PaymentMethod.VOUCHER.getValue(), order, paymentData);
         });
-        paymentData.clear();
     }
 
     @Test
