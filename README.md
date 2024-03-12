@@ -59,3 +59,19 @@ Kerugian tidak menerapkan prinsip `SOLID`
 - Tanpa OCP dan DIP: Kode menjadi kaku dan sulit diperbarui atau diuji. Perubahan kecil bisa memerlukan banyak penyesuaian di tempat lain.
 - Tanpa SRP: Kode menjadi rumit dan sulit dipelihara. Satu perubahan bisa berdampak luas, meningkatkan risiko bug.
 - Tanpa LSP dan ISP: Kurangnya fleksibilitas dan ketergantungan yang tinggi antar komponen, membuat sulit untuk menambah atau mengubah fitur tanpa mengubah banyak bagian kode.
+
+
+# Tutorial 4
+
+### 1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+- TDD yang saya lakukan sepertinya cukup bagus. Tes-tessnya sudah cukup untuk memastikan program berjalan dengan baik, dan saya juga mencoba memperbaiki bagian-bagian yang belum sempurna. Tes-tessnya juga membantu saya merasa yakin saat ingin mengubah-ubah kode program. Meskipun begitu, saya tetap terbuka untuk melakukan perbaikan di jika perlu, terutama dalam meningkatkan tes integrasi agar lebih cepat memberikan umpan balik.
+- Maintainability tampak terpenuhi karena tes saya untuk melakukan refaktor dan mendorong desain yang baik. Saya terbuka untuk menyesuaikan keseimbangan antara tes unit dan integrasi berdasarkan umpan balik yang di berikan.
+- Sebagai kesimpulan, meskipun pendekatan TDD saya secara umum efektif, tetapi selalu ada kesiapan untuk beradaptasi dan mengoptimalkan, terutama dalam menyempurnakan tes integrasi untuk umpan balik yang lebih cepat dan memastikan alur kerja produksi yang lancar.
+
+### 2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+- Tes-tes saya berhasil mengikuti prinsip F.I.R.S.T karena dijalankan sesegera mungkin agar tidak mengganggu alur kerja saya. Saya membagi tes menjadi tes unit dan fungsional. Saya juga menghindari menunggu subsistem atau fungsi lain saat menggunakan tes unit. 
+- Tes-tes saya tidak saling berinteraksi, mengubah status fungsi, atau tergantung pada tes lain. 
+- Tes-tes saya konsisten saat dijalankan berulang kali. Jika fungsi yang saya uji melibatkan pemanggilan fungsi lain, saya menggunakan teknik Test Double. 
+- Tes-tes saya memiliki validasi sendiri karena memiliki asertasi yang ketat. 
+- Tes-tes saya mencakup semua jalur `happy` dan `unhappy` serta semua kemungkinan kesalahan dan hasil, sehingga dapat dianggap lengkap dan tepat waktu.
+
